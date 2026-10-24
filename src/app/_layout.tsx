@@ -1,18 +1,95 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import { Stack } from 'expo-router';
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
+import { AuthProvider } from '../features/auth/AuthContext';
+import { COLORS } from '../theme/colors';
 
-SplashScreen.preventAutoHideAsync();
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function RootLayout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
+    <AuthProvider>
+      <Stack
+        screenOptions={{
+          headerStyle: {
+            backgroundColor:
+              COLORS.background,
+          },
+          headerTintColor: COLORS.ink,
+          headerShadowVisible: false,
+          contentStyle: {
+            backgroundColor:
+              COLORS.background,
+          },
+        }}
+      >
+        <Stack.Screen
+          name="index"
+          options={{
+            headerShown: false,
+          }}
+        />
+
+        <Stack.Screen
+          name="login"
+          options={{
+            headerShown: false,
+          }}
+        />
+
+        <Stack.Screen
+          name="prowner/index"
+          options={{
+            headerShown: false,
+          }}
+        />
+
+        <Stack.Screen
+          name="prunner/index"
+          options={{
+            headerShown: false,
+          }}
+        />
+
+        <Stack.Screen
+          name="prowner/request"
+          options={{
+            title: 'Request a walk',
+          }}
+        />
+
+        <Stack.Screen
+          name="prowner/tracking"
+          options={{
+            title: 'Live walk',
+          }}
+        />
+
+        <Stack.Screen
+          name="prunner/walk/[id]"
+          options={{
+            title: 'Walk request',
+          }}
+        />
+
+        <Stack.Screen
+          name="prunner/active"
+          options={{
+            title: 'Active walk',
+          }}
+        />
+
+        <Stack.Screen
+          name="history"
+          options={{
+            title: 'My walks',
+          }}
+        />
+
+        <Stack.Screen
+          name="profile"
+          options={{
+            title: 'Profile',
+          }}
+        />
+      </Stack>
+    </AuthProvider>
   );
 }
