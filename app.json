@@ -15,7 +15,8 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.viictorhugodevmx.pawgo"
     },
     "web": {
       "output": "static",
@@ -35,6 +36,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "7ac15749-0e22-4949-b433-7cbc3599449b"
+      }
+    },
+    "owner": "viictorhugodevmx"
   }
 }
